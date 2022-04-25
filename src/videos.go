@@ -43,9 +43,7 @@ func getVideosClips(page int, limit int, fromTimestamp int) VideosClipsResult {
 	re := regexp.MustCompile(`BigBuckBunny_h264_\d+.mp4`)
 	mp4_re := regexp.MustCompile(`(.*).(?:mp4)$`)
 
-	// Was only designed for this just 1 video, won't really work in multiple videos
-	
-	index := 0
+	index := 0 // Was only designed for this just 1 video, won't really work in multiple videos - Would require some teaks to this index
 	videos_files, err := ioutil.ReadDir("./" + VIDEOS_DIR)
     if err != nil {
         log.Fatal(err)
