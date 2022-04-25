@@ -43,6 +43,8 @@ func getVideosClips(page int, limit int, fromTimestamp int) VideosClipsResult {
 	re := regexp.MustCompile(`BigBuckBunny_h264_\d+.mp4`)
 	mp4_re := regexp.MustCompile(`(.*).(?:mp4)$`)
 
+	// Was only designed for this just 1 video, won't really work in multiple videos
+	
 	index := 0
 	videos_files, err := ioutil.ReadDir("./" + VIDEOS_DIR)
     if err != nil {
@@ -73,8 +75,8 @@ func getVideosClips(page int, limit int, fromTimestamp int) VideosClipsResult {
 			
 			clip := VideoClip {
 				Name: f.Name(),
-				VideoSrc: "http://localhost/" + VIDEOS_DIR + "/" + f.Name(),
-				ThumbSrc: "http://localhost/" + VIDEOS_DIR + "/" + mp4_re.ReplaceAllString(f.Name(), `$1.jpg`),
+				VideoSrc: "http://localhost/" + VIDEOS_DIR + "/" + video_file.Name() + "/" + f.Name(),
+				ThumbSrc: "http://localhost/" + VIDEOS_DIR + "/" + video_file.Name() + "/" + mp4_re.ReplaceAllString(f.Name(), `$1.jpg`),
 				Checksum: "5f039b4ef0058a1d652f13d612375a5b",
 			}
 			
