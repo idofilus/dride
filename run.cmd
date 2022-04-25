@@ -1,3 +1,3 @@
 @echo off
 
-CALL go run src/main.go
+CALL go run src/videos.go src/main.go
